@@ -11,6 +11,7 @@ CONTAINER=/projects/ncrrbt_share_la/dev_pipe
 INDEX=/projects/ncrrbt_share_la/dev_pipe
 CPUS=12
 
+
 ########
 ## BBMap
 
@@ -100,7 +101,7 @@ cd rseqc_results
 
 
 ######
-## RSeQC
+## RSeQC and Sambamba
 
 wget https://sourceforge.net/projects/rseqc/files/BED/Mouse_Mus_musculus/GRCm39_GENCODE_VM27.bed.gz
 gunzip GRCm39_GENCODE_VM27.bed.gz
