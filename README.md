@@ -9,3 +9,4 @@ This is the RNA-Seq data from the hippocampus of mice treated with fentanyl (W, 
 Three files are created:  
 hippocampus_deseq2_FentanylvsControl_differential_expression.xlsx
 hippocampus_deseq2_WithdrawalvsControl_differential_expression.xlsx  
+hippocampus_deseq2_WithdrawalvsFentanyl_differential_expression.xlsx  
