@@ -60,7 +60,7 @@ dds
 ddsLRT <- DESeq(dds, test="LRT", full=~sex+condition, reduced=~sex)
 resultsNames(ddsLRT)
 
-res <- results(ddsLRT, contrast=list("condition_F_vs_C"))
+res <- results(ddsLRT, contrast=list("condition_F_vs_C"), test="Wald")
 
 res <- merge (data.frame (res), counts (dds), by="row.names")
 res <- merge (res, annot, by.x="Row.names", by.y="Geneid")
@@ -74,7 +74,7 @@ write.xlsx (res, "hippocampus_deseq2_FentanylvsControl_differential_expression.x
 ddsLRT <- DESeq(dds, test="LRT", full=~sex+condition, reduced=~sex)
 resultsNames(ddsLRT)
 
-res <- results(ddsLRT, contrast=list("condition_W_vs_C"))
+res <- results(ddsLRT, contrast=list("condition_W_vs_C"), test="Wald")
 
 res <- merge (data.frame (res), counts (dds), by="row.names")
 res <- merge (res, annot, by.x="Row.names", by.y="Geneid")
@@ -88,7 +88,7 @@ write.xlsx (res, "hippocampus_deseq2_WithdrawalvsControl_differential_expression
 ddsLRT <- DESeq(dds, test="LRT", full=~sex+condition, reduced=~sex)
 resultsNames(ddsLRT)
 
-res <- results(ddsLRT, contrast=list("condition_W_vs_C", "condition_F_vs_C"))  ## This is equivalent to W/F
+res <- results(ddsLRT, contrast=list("condition_W_vs_C", "condition_F_vs_C"), test="Wald")  ## This is equivalent to W/F
 
 res <- merge (data.frame (res), counts (dds), by="row.names")
 res <- merge (res, annot, by.x="Row.names", by.y="Geneid")
