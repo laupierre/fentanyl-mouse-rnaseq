@@ -1,0 +1,31 @@
+#!/bin/bash
+#PBS -l walltime=20:00:00
+#PBS -l select=1:ncpus=12
+#PBS -q workq
+#PBS -N index
+
+cd $PBS_O_WORKDIR
+
+CONTAINER=/projects/ncrrbt_share_la/dev_pipe
+INDEX=/projects/ncrrbt_share_la/dev_pipe
+CPUS=12
+
+wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M32/gencode.vM32.annotation.gtf.gz
+wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M32/GRCm39.primary_assembly.genome.fa.gz
+
+gunzip gencode.vM32.annotation.gtf.gz
+gunzip GRCm39.primary_assembly.genome.fa.gz
+
+gtf=gencode.vM32.annotation.gtf
+genome=GRCm39.primary_assembly.genome.fa
+
+
+## This is for 50 nts reads
+
+apptainer exec $CONTAINER/star.sif /bin/bash -c \
+"STAR --runThreadN $CPUS \
+--runMode genomeGenerate \
+--genomeDir mouse_star_index \
+--genomeFastaFiles $genome \
+--sjdbGTFfile $gtf \
+--sjdbOverhang 49"
