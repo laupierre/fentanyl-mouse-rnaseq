@@ -24,7 +24,7 @@ var=(`ls *_R1*.fastq.gz`)
 	prefix=`echo ${i%%_R1*}`
 	
 	apptainer exec $CONTAINER/bbmap.sif /bin/bash -c \
-  "bbduk.sh threads=$CPUS in=$i out1=$prefix\_R1_001.filtered.fastq ref=mouse_ribosomal.fa k=31 overwrite=t"
+        "bbduk.sh threads=$CPUS in=$i out1=$prefix\_R1_001.filtered.fastq ref=mouse_ribosomal.fa k=31 overwrite=t"
 		
 	## Put this inside the loop
 	if [ $? -eq 0 ]
@@ -142,7 +142,7 @@ cd ../..
 files=`ls *fastq.gz | xargs -n1000`
 mkdir fastqc_results
 
-apptainer exec $CONTAINER/fastqc.sif /bin/bash -c \
+        apptainer exec $CONTAINER/fastqc.sif /bin/bash -c \
 	"fastqc -t $CPUS -o fastqc_results $files" || { 
    	echo "FastQC has an error. Pipeline terminated" >> log.out
     	exit 1
@@ -154,7 +154,6 @@ apptainer exec $CONTAINER/fastqc.sif /bin/bash -c \
 #######
 ## MultiQC
 
-
 apptainer exec $CONTAINER/multiqc.sif /bin/bash -c \
 "multiqc -f -n multiqc_report_rnaseq \
 -m featureCounts $PBS_O_WORKDIR/projects/star_results/*summary \
@@ -162,9 +161,9 @@ apptainer exec $CONTAINER/multiqc.sif /bin/bash -c \
 -m sambamba $PBS_O_WORKDIR/projects/rseqc_results/markdup.star*.log \
 -m rseqc $PBS_O_WORKDIR/projects/rseqc_results/*infer_experiment.txt \
 -m fastqc $PBS_O_WORKDIR/projects/fastqc_results/*zip" || { 
-   	echo "MultiQC has an error. Pipeline terminated" >> log.out
-    	exit 1
-	}
+echo "MultiQC has an error. Pipeline terminated" >> log.out
+exit 1
+}
 
 
 
