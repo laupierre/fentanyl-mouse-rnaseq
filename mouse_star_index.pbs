@@ -20,7 +20,7 @@ gtf=gencode.vM32.annotation.gtf
 genome=GRCm39.primary_assembly.genome.fa
 
 
-## This is for 50 nts reads
+## This is for 50 nt short reads
 
 apptainer exec $CONTAINER/star.sif /bin/bash -c \
 "STAR --runThreadN $CPUS \
