@@ -4,7 +4,9 @@ library (ggplot2)
 
 system ("mkdir ./output")
 
+## See Github RNA-Seq_mouse/gene_annotation.R
 anno <- read.delim ("gencode.vM32.annotation.txt")
+
 anno <- anno[ ,grep ("transcript_id", colnames (anno), invert=TRUE)]
 anno <- unique (anno)
 
