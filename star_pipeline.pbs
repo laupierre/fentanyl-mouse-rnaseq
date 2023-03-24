@@ -86,6 +86,9 @@ cd star_results
 #######
 ## FeatureCounts
 
+wget https://ftp.ebi.ac.uk/pub/databases/gencode/Gencode_mouse/release_M32/gencode.vM32.annotation.gtf.gz
+gunzip gencode.vM32.annotation.gtf.gz
+
 files=`ls -d *bam | xargs -n1000`
 
 apptainer exec $CONTAINER/featurecounts.sif /bin/bash -c \
