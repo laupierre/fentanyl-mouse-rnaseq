@@ -49,7 +49,7 @@ cd projects
 ## STAR
 
 
-## This STAR index was created with mouse_star_index.pbs
+## This STAR index was created with mouse_star_index.pbs for 50 nts reads
 cp -r ../mouse_star_index .
 
 var=(`ls *_R1*.fastq.gz`)
