@@ -3,7 +3,7 @@
 #PBS -l nodes=1:ppn=12
 #PBS -q workq
 #PBS -j oe
-#PBS -N martina
+#PBS -N fentanyl
 
 cd $PBS_O_WORKDIR
 
