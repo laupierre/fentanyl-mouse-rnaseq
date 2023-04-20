@@ -50,7 +50,7 @@ fgseaRes[ , leadingEdge := mapIdsList(x=org.Mm.eg.db,
 
 
 # save fgsea results in a file
-#fgseaRes <- fgseaRes[ ,c(1:6,8)]
+fgseaRes <- fgseaRes[ ,-7]
 fgseaRes <- data.frame (fgseaRes[order (fgseaRes$padj), ])
 fgseaRes <- fgseaRes[order (fgseaRes$padj), ]
 fgseaRes <- fgseaRes[ ,-4]
